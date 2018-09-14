@@ -26,6 +26,7 @@ except FileNotFoundError:
     pass
 
 pkg_has_config = not None
+
 if pkg_has_config:
     requires.append("provision_py_proj")
 
@@ -62,7 +63,6 @@ def copy_pkg_files():
                     shutil.chown(f_path, user=user, group=user)
                     os.chmod(f_path, stat.S_IRUSR | stat.S_IWUSR)
 
-
 def reset():
     """Remove build dirs."""
     dirnames_to_remove = [pkg_name + ".egg-info", "dist", "build"]
@@ -75,10 +75,10 @@ def setuptools_setup():
     setup(
         name="kutils4p",
         version="0.1",
-        description="default description",
-        url="default url",
-        author="Default Author",
-        author_email="author@default.com",
+        description="various python utils and data_structs",
+        url="https://github.com/ku-wolf/kutils4p.git",
+        author="Kevin Wolf",
+        author_email="kevinuwolf@gmail.com",
         license="gplv3.txt",
         packages=find_packages(),
         scripts=scripts,
