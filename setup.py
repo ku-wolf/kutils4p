@@ -13,7 +13,7 @@ parent_dir = os.path.dirname(os.path.realpath(__file__))
 data_src_dir = pkg_name + "_data"
 config_src_dir = pkg_name + "_config"
 defaults_location = os.path.join(pkg_name, "defaults")
-requires = list()
+requires = ["appdirs"]
 
 # Create scripts list
 script_dir = os.path.join(parent_dir, "bin")
@@ -24,11 +24,6 @@ try:
 
 except FileNotFoundError:
     pass
-
-pkg_has_config = not None
-
-if pkg_has_config:
-    requires.append("provision_py_proj")
 
 
 def copy_pkg_files():
