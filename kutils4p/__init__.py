@@ -88,6 +88,3 @@ def is_number(s):
         pass
 
     return False
-
-parent_dir = os.path.dirname(os.path.realpath(__file__))
-pkg_name = os.path.basename(parent_dir)

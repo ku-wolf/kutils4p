@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Setup module for provisioner pkg."""
+"""Setup module for kutils4p pkg."""
 from setuptools import setup, find_packages
 import os
 import sys
@@ -7,13 +7,13 @@ import shutil
 import stat
 from setuptools.command.develop import develop
 from setuptools.command.install import install
+from abstract_requires import requires
 
 pkg_name = "kutils4p"
 parent_dir = os.path.dirname(os.path.realpath(__file__))
 data_src_dir = pkg_name + "_data"
 config_src_dir = pkg_name + "_config"
 defaults_location = os.path.join(pkg_name, "defaults")
-requires = ["appdirs"]
 
 # Create scripts list
 script_dir = os.path.join(parent_dir, "bin")
@@ -24,7 +24,6 @@ try:
 
 except FileNotFoundError:
     pass
-
 
 def copy_pkg_files():
     """Copy config and data files."""
@@ -58,6 +57,7 @@ def copy_pkg_files():
                     shutil.chown(f_path, user=user, group=user)
                     os.chmod(f_path, stat.S_IRUSR | stat.S_IWUSR)
 
+
 def reset():
     """Remove build dirs."""
     dirnames_to_remove = [pkg_name + ".egg-info", "dist", "build"]
@@ -70,10 +70,10 @@ def setuptools_setup():
     setup(
         name="kutils4p",
         version="0.1",
-        description="various python utils and data_structs",
-        url="https://github.com/ku-wolf/kutils4p.git",
-        author="Kevin Wolf",
-        author_email="kevinuwolf@gmail.com",
+        description="default description",
+        url="default url",
+        author="default author",
+        author_email="default author",
         license="gplv3.txt",
         packages=find_packages(),
         scripts=scripts,
