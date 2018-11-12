@@ -1,6 +1,6 @@
 # kutils4p
 
-Simple everyday utils and data_structs for python.
+Simple everyday utils and data structs written in vanilla python3.
 
 # Includes
 

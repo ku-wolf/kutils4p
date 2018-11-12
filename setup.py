@@ -25,38 +25,6 @@ try:
 except FileNotFoundError:
     pass
 
-def copy_pkg_files():
-    """Copy config and data files."""
-    from appdirs import user_data_dir, user_config_dir
-
-    pkg_dirs_to_copy = [
-        (data_src_dir, user_data_dir()),
-        (config_src_dir, user_config_dir())
-    ]
-    for d, t in pkg_dirs_to_copy:
-        t = os.path.join(t, d)
-        d = os.path.join(os.path.join(parent_dir, pkg_name), d)
-
-        if os.path.exists(d):
-            shutil.rmtree(t, ignore_errors=True)
-            shutil.copytree(d, t)
-
-            user = os.environ["SUDO_USER"]
-
-            for root, dirs, files in os.walk(t):
-                shutil.chown(root, user=user, group=user)
-                os.chmod(root, stat.S_IRWXU)
-
-                for d in dirs:
-                    d_path = os.path.join(root, d)
-                    shutil.chown(d_path, user=user, group=user)
-                    os.chmod(d_path, stat.S_IRWXU)
-
-                for f in files:
-                    f_path = os.path.join(root, f)
-                    shutil.chown(f_path, user=user, group=user)
-                    os.chmod(f_path, stat.S_IRUSR | stat.S_IWUSR)
-
 
 def reset():
     """Remove build dirs."""
@@ -65,20 +33,30 @@ def reset():
         shutil.rmtree(d, ignore_errors=True)
 
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 def setuptools_setup():
     """Setup provisioner."""
     setup(
         name="kutils4p",
         version="0.1",
-        description="default description",
-        url="default url",
-        author="default author",
-        author_email="default author",
+        description="Simple everyday utils and data structs written in vanilla python3.",
+        url="https://github.com/ku-wolf/kutils4p",
+        author="Kevin Wolf",
+        author_email="kevinuwolf@gmail.com",
         license="gplv3.txt",
         packages=find_packages(),
         scripts=scripts,
         install_requires=requires,
         setup_requires=requires,
+        long_description=long_description,
+        long_description_content_type="text/markdown",
+        classifiers=[
+            "Programming Language :: Python :: 3",
+            "Operating System :: OS Independent",
+            "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
+        ],
     )
 
 
