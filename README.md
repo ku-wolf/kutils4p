@@ -2,12 +2,11 @@
 
 Simple everyday utils and data_structs for python.
 
-#Includes
+# Includes
 
 ## File Utils
 * generate_files_of_type
 * is_non_zero_file
-*
 ## KDecorator
 
 * Generic decorator class which calls "before" method before decorated function and "after" method on output decorated output. Flow can be interrupted by raising a KException to prevent "after" call.
