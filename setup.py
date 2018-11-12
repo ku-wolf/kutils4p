@@ -68,7 +68,6 @@ def main():
         reset()
     else:
         setuptools_setup()
-        copy_pkg_files()
 
 if __name__ == "__main__":
     main()
